@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dirección de instancia EC2</title>
+</head>
+<body>
+  <h1>Dirección de instancia EC2</h1>
+  <p>La dirección de tu instancia EC2 es:</p>
+  <p id="3.208.22.116"></p>
+</body>
+<script>
+  // Obtenemos la dirección IP de la instancia
+  var ipAddress = document.querySelector("#ip-address");
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/get-ip-address");
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      ipAddress.innerHTML = xhr.responseText;
+    } else {
+      ipAddress.innerHTML = "No se pudo obtener la dirección IP";
+    }
+  };
+  xhr.send();
+</script>
+</html>
